@@ -1,9 +1,4 @@
 trigger:
-- task: NuGetCommand@2
-  inputs:
-    command: 'restore'
-    restoreSolution: '**/*.sln'
-    feedsToUse: 'select'
 - '*'
 
 variables:
@@ -141,7 +136,7 @@ stages:
         arguments: '--no-build --configuration $(buildConfiguration)'
         publishTestResults: true
         projects: '$(System.DefaultWorkingDirectory)/**/*UITests.csproj'
- 
+
 - stage: 'Staging'
   displayName: 'Deploy to the staging environment'
   dependsOn: Test
